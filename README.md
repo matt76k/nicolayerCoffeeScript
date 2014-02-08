@@ -11,7 +11,7 @@ This library scrolls comments on the screen like [nicovideo](http://www.nicovide
 
 # Usage
   
-  see [demo](index.html)
+  see index.html after Getting Started
 
 # License
 
