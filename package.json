@@ -1,0 +1,15 @@
+{
+  "name": "nicolayer",
+  "author": "matt",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-coffee": "*",
+    "coffee-script": "*",
+    "gulp-jade": "*",
+    "gulp-clean": "*",
+    "gulp-connect": "*",
+    "gulp-util": "*",
+    "gulp-bower": "*"
+  }
+}
