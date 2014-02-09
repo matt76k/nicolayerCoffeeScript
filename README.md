@@ -15,4 +15,7 @@ This library scrolls comments on the screen like [nicovideo](http://www.nicovide
 
 # License
 
-  Code released under the MIT license
+
+  Code released under [MIT](http://opensource.org/licenses/MIT)
+
+  Copyright (c) 2014 Matt
