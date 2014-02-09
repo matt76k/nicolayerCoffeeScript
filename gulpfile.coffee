@@ -5,6 +5,7 @@ coffee = require('gulp-coffee')
 clean = require('gulp-clean')
 connect = require('gulp-connect')
 bower = require('gulp-bower')
+mocha = require('gulp-mocha')
 
 gulp.task 'coffee', ->
   gulp.src('src/*.coffee')
@@ -26,6 +27,10 @@ gulp.task 'connect', connect.server(
 
 gulp.task 'bower', ->
   bower().pipe gulp.dest('lib/')
+
+gulp.task 'test', ['coffee'], ->
+   gulp.src ['lib/nicolayer.js', 'test/*.coffee']
+     .pipe mocha {reporter: 'spec'}
 
 gulp.task 'clean', ->
   gulp.src('./*.html')

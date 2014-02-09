@@ -10,6 +10,9 @@
     "gulp-clean": "*",
     "gulp-connect": "*",
     "gulp-util": "*",
-    "gulp-bower": "*"
+    "gulp-bower": "*",
+    "gulp-mocha": "*",
+    "chai": "*",
+    "mocha": "*",
   }
 }
