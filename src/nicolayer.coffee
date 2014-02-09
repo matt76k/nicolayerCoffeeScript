@@ -1,14 +1,6 @@
 class Comment
-  constructor: (str) ->
-    @body = $("<span class='nicoComment'>#{str}</span>")
-  
-  number: (number) ->
-    @body.css 'id', 'item#{number}'
-    @
-
-  append: (parent) ->
-    @body.appendTo parent
-    @
+  constructor: (str, number) ->
+    @body = $("<span class='nicoComment' id='#{number}'>#{str}</span>")
   
   fontsize: (command) ->
     if command.size == 'large'
@@ -29,8 +21,9 @@ class Comment
 
 class NicoLayer
   constructor: (@el) ->
-    @width = @el.width()
+    @width  = @el.width()
     @height = @el.height()
+
     @queue = []
     @wqueue = []
     @number = 0
@@ -49,8 +42,8 @@ class NicoLayer
 
   format: (command, str) ->
     @number += 1
-    comment = new Comment(str)
-    comment.number(@number).append(@el)
+    comment = new Comment(str, @number)
+    @el.append comment.body
     comment.fontsize(command)
 
   view: (c, y) ->
