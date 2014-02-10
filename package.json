@@ -13,6 +13,6 @@
     "gulp-bower": "*",
     "gulp-mocha": "*",
     "chai": "*",
-    "mocha": "*",
+    "mocha": "*"
   }
 }
