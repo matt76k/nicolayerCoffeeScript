@@ -18,7 +18,7 @@ gulp.task 'templates', ->
       .pipe gulp.dest('.')
 
 gulp.task 'connect', connect.server(
-  root: __dirname
+  root: [__dirname]
   port: 1337
   livereload: true
   open:
