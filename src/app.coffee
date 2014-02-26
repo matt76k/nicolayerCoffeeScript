@@ -1,5 +1,5 @@
 $.event.add window, "load", ->
-  window.nicolayer = new NicoLayer($('#nicolayer'))
+  window.nicolayer = new NicoLayer($('#layer0'))
   setInterval("window.nicolayer.observe()", 150)
 
   for i in [0..40]

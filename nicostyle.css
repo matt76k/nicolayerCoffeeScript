@@ -12,7 +12,7 @@ span.nicoComment{
   border-color:#dc143c;
 }
 
-span#nicolayer {
+span.nicolayer {
   display: table;
   position: relative;
   overflow: hidden;
