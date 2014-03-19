@@ -4,6 +4,7 @@ jade = require('gulp-jade')
 coffee = require('gulp-coffee')
 clean = require('gulp-clean')
 connect = require('gulp-connect')
+stylus = require('gulp-stylus')
 bower = require('gulp-bower')
 mocha = require('gulp-mocha')
 
@@ -15,6 +16,9 @@ gulp.task 'coffee', ->
 gulp.task 'templates', ->
   gulp.src('src/*.jade')
       .pipe(jade({pretty:true}))
+      .pipe gulp.dest('.')
+  gulp.src('src/*.styl')
+      .pipe(stylus({use:['nib']}))
       .pipe gulp.dest('.')
 
 gulp.task 'connect', connect.server(
@@ -34,6 +38,8 @@ gulp.task 'test', ['coffee'], ->
 
 gulp.task 'clean', ->
   gulp.src('./*.html')
+      .pipe(clean())
+  gulp.src('./*.css')
       .pipe(clean())
   gulp.src('lib')
       .pipe(clean())

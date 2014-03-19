@@ -12,6 +12,7 @@
     "gulp-util": "*",
     "gulp-bower": "*",
     "gulp-mocha": "*",
+    "gulp-stylus": "*",
     "chai": "*",
     "mocha": "*"
   }
