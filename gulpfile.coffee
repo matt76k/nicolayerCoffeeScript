@@ -5,8 +5,11 @@ coffee = require('gulp-coffee')
 clean = require('gulp-clean')
 connect = require('gulp-connect')
 stylus = require('gulp-stylus')
+uglify = require('gulp-uglify')
+rename = require('gulp-rename')
 bower = require('gulp-bower')
 mocha = require('gulp-mocha')
+pkg = require('./package.json')
 
 gulp.task 'coffee', ->
   gulp.src('src/*.coffee')
@@ -33,8 +36,14 @@ gulp.task 'bower', ->
   bower().pipe gulp.dest('lib/')
 
 gulp.task 'test', ['coffee'], ->
-   gulp.src ['lib/nicolayer.js', 'test/*.coffee']
+   gulp.src ["lib/#{pkg.name}.js", 'test/*.coffee']
      .pipe mocha {reporter: 'spec'}
+
+gulp.task 'compress', ->
+  gulp.src("lib/#{pkg.name}.js")
+    .pipe(rename("#{pkg.name}.min.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest('lib/'))
 
 gulp.task 'clean', ->
   gulp.src('./*.html')
@@ -45,3 +54,5 @@ gulp.task 'clean', ->
       .pipe(clean())
 
 gulp.task 'default', ['coffee', 'templates', 'connect']
+gulp.task 'release', ['coffee', 'compress']
+

@@ -6,6 +6,7 @@
     "gulp": "*",
     "gulp-coffee": "*",
     "coffee-script": "*",
+    "uglify-js": "*",
     "gulp-jade": "*",
     "gulp-clean": "*",
     "gulp-connect": "*",
@@ -13,6 +14,8 @@
     "gulp-bower": "*",
     "gulp-mocha": "*",
     "gulp-stylus": "*",
+    "gulp-uglify": "*",
+    "gulp-rename": "*",
     "chai": "*",
     "mocha": "*"
   }
