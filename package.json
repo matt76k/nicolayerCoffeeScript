@@ -7,15 +7,18 @@
     "gulp-coffee": "*",
     "coffee-script": "*",
     "uglify-js": "*",
+    "run-sequence": "*",
     "gulp-jade": "*",
     "gulp-clean": "*",
     "gulp-connect": "*",
+    "gulp-open": "*",
     "gulp-util": "*",
     "gulp-bower": "*",
     "gulp-mocha": "*",
     "gulp-stylus": "*",
     "gulp-uglify": "*",
     "gulp-rename": "*",
+    "nib": "*",
     "chai": "*",
     "mocha": "*"
   }
