@@ -9,9 +9,7 @@
     "uglify-js": "*",
     "run-sequence": "*",
     "gulp-jade": "*",
-    "gulp-clean": "*",
-    "gulp-connect": "*",
-    "gulp-open": "*",
+    "gulp-webserver": "*",
     "gulp-util": "*",
     "gulp-bower": "*",
     "gulp-mocha": "*",
@@ -19,7 +17,12 @@
     "gulp-uglify": "*",
     "gulp-rename": "*",
     "nib": "*",
+    "del": "*",
     "chai": "*",
     "mocha": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt76k/nicolayer.git"
   }
 }

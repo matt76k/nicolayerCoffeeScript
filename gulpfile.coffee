@@ -2,8 +2,8 @@ gulp = require('gulp')
 gutil = require('gulp-util')
 jade = require('gulp-jade')
 coffee = require('gulp-coffee')
-clean = require('gulp-clean')
-connect = require('gulp-connect')
+del = require('del')
+server = require('gulp-webserver')
 stylus = require('gulp-stylus')
 uglify = require('gulp-uglify')
 rename = require('gulp-rename')
@@ -11,7 +11,6 @@ bower = require('gulp-bower')
 mocha = require('gulp-mocha')
 pkg = require('./package.json')
 nib = require('nib')
-open = require('gulp-open')
 runSequence = require('run-sequence')
 
 gulp.task 'coffee', ->
@@ -28,18 +27,12 @@ gulp.task 'templates', ->
       .pipe gulp.dest('.')
 
 gulp.task 'connect', ->
-  connect.server({
-    root: __dirname,
-    port: 1337,
-    livereload: true
-  })
-  
-  options = {
-    url: "http://localhost:1337",
-    app: "Google Chrome"
-  }
-  gulp.src("./index.html")
-  .pipe(open("", options))
+  gulp.src('.')
+      .pipe server({
+        open: true,
+        port: 8888,
+        livereload: true
+      })
   
 gulp.task 'bower', ->
   bower().pipe gulp.dest('lib/')
@@ -64,4 +57,5 @@ gulp.task 'clean', ->
 
 gulp.task 'default', (cb) ->
   runSequence(['coffee', 'templates'], 'connect', cb)
+
 gulp.task 'release', ['coffee', 'compress']
