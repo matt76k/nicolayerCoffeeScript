@@ -1,3 +1,6 @@
+$ = require 'jquery'
+_ = require 'lodash'
+
 class Comment
   constructor: (str, number) ->
     @body = $("<span class='nicoComment' id='#{number}'>#{str}</span>")

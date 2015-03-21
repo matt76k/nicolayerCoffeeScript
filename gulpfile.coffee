@@ -1,22 +1,28 @@
-gulp = require('gulp')
-gutil = require('gulp-util')
-jade = require('gulp-jade')
-coffee = require('gulp-coffee')
-del = require('del')
-server = require('gulp-webserver')
-stylus = require('gulp-stylus')
-uglify = require('gulp-uglify')
-rename = require('gulp-rename')
-bower = require('gulp-bower')
-mocha = require('gulp-mocha')
-pkg = require('./package.json')
-nib = require('nib')
+gulp        = require('gulp')
+gutil       = require('gulp-util')
+jade        = require('gulp-jade')
+coffee      = require('gulp-coffee')
+del         = require('del')
+server      = require('gulp-webserver')
+stylus      = require('gulp-stylus')
+uglify      = require('gulp-uglify')
+rename      = require('gulp-rename')
+mocha       = require('gulp-mocha')
+pkg         = require('./package.json')
+nib         = require('nib')
 runSequence = require('run-sequence')
 
+browserify  = require('browserify')
+source      = require('vinyl-source-stream')
+
 gulp.task 'coffee', ->
-  gulp.src('src/*.coffee')
-      .pipe(coffee())
-      .pipe gulp.dest('lib')
+ browserify
+    entries: ['./src/main.coffee']
+    extensions: ['.coffee']
+  .transform 'coffeeify'
+  .bundle()
+  .pipe source 'main.js'
+  .pipe gulp.dest './'
 
 gulp.task 'templates', ->
   gulp.src('src/*.jade')
@@ -34,26 +40,23 @@ gulp.task 'connect', ->
         livereload: true
       })
   
-gulp.task 'bower', ->
-  bower().pipe gulp.dest('lib/')
-
 gulp.task 'test', ['coffee'], ->
    gulp.src ["lib/#{pkg.name}.js", 'test/*.coffee']
      .pipe mocha {reporter: 'spec'}
 
 gulp.task 'compress', ->
-  gulp.src("lib/#{pkg.name}.js")
-    .pipe(rename("#{pkg.name}.min.js"))
-    .pipe(uglify())
-    .pipe(gulp.dest('lib/'))
+  browserify
+      extries: ['./src/nicolayer.coffee']
+      extensions: ['.coffee']
+    .transform 'coffeeify'
+    .bundle()
+    .pipe source 'nicolayer.js'
+    #.pipe rename("#{pkg.name}.min.js")
+    #.pipe uglify()
+    .pipe gulp.dest './dist'
 
 gulp.task 'clean', ->
-  gulp.src('./*.html')
-      .pipe(clean())
-  gulp.src('./*.css')
-      .pipe(clean())
-  gulp.src('lib')
-      .pipe(clean())
+  del ['*.html', '*.css', '*.js', 'dist']
 
 gulp.task 'default', (cb) ->
   runSequence(['coffee', 'templates'], 'connect', cb)

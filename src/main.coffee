@@ -1,3 +1,6 @@
+NicoLayer = require './nicolayer'
+$ = require 'jquery'
+
 $.event.add window, "load", ->
   window.nicolayer = new NicoLayer($('#layer0'))
   setInterval("window.nicolayer.observe()", 150)

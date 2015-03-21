@@ -19,7 +19,14 @@
     "nib": "*",
     "del": "*",
     "chai": "*",
-    "mocha": "*"
+    "mocha": "*",
+
+    "browserify": "*",
+    "coffeeify": "*",
+    "vinyl-source-stream": "*",
+
+    "jquery": "*",
+    "lodash": "*"
   },
   "repository": {
     "type": "git",
