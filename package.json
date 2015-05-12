@@ -24,7 +24,7 @@
     "browserify": "*",
     "coffeeify": "*",
     "vinyl-source-stream": "*",
-
+    "normalize.styl": "*",
     "jquery": "*",
     "lodash": "*"
   },
